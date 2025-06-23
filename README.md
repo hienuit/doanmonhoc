@@ -1,40 +1,5 @@
-# Du Lịch Việt Nam với AI - Travel by AI
+# 🇻🇳 Du Lịch Việt Nam với AI - Travel Vietnam with AI
 
-## 👥 Thông tin nhóm
-
-**🏆 Nhóm 1** - Đồ án môn Lập trình ứng dụng web - NT208
-
-### 👨‍💻 Thành viên nhóm:
-
-| STT | Họ và tên | MSSV | 
-|-----|-----------|------|
-| 1 | **Lê Đăng Minh Hiển** | `23520458` |
-| 2 | **Vũ Nguyễn Thái Dương** | `23520360` |
-
-### 🎯 Phân công công việc:
-
-#### Lê Đăng Minh Hiển (23520458):
-- 🏗️ Thiết kế kiến trúc hệ thống
-- 🗄️ Phát triển Backend với Flask
-- 🤖 Tích hợp AI (Google Generative AI)
-- 🔐 Xây dựng hệ thống Authentication & Authorization
-- 📊 Thiết kế và quản lý Database (PostgreSQL)
-- 🔧 Cấu hình deployment
-
-#### Vũ Nguyễn Thái Dương (23520360):
-- 🎨 Thiết kế giao diện người dùng (UI/UX)
-- 💻 Phát triển Frontend (HTML, CSS, JavaScript)
-- 📱 Tối ưu responsive design
-- 🗺️ Tích hợp bản đồ và geolocation
-- 🌤️ Phát triển tính năng thời tiết
-- 🎭 Thiết kế trải nghiệm người dùng
-
-### 🏫 Thông tin học thuật:
-
-- **Trường**: Đại học Công nghệ Thông tin - ĐHQG TP.HCM
-- **Môn học**: Lập trình Web
-- **Học kỳ**: HK1 2024-2025
-- **Giảng viên hướng dẫn**: Trần Tuấn Dũng
 ## 📖 Mô tả dự án
 
 Ứng dụng web du lịch thông minh sử dụng AI để gợi ý địa điểm du lịch tại Việt Nam. Hệ thống giúp người dùng tìm kiếm và lập kế hoạch du lịch dựa trên sở thích cá nhân, thời gian và ngân sách.
@@ -125,20 +90,23 @@ GRANT ALL PRIVILEGES ON DATABASE travel_vietnam_db TO travel_user;
 Tạo file `.env` trong thư mục gốc của project với nội dung sau:
 
 ```env
-# Database Configuration
-SQLALCHEMY_DATABASE_URI=postgresql://postgres:your_password@localhost:5432/travel_vietnam_db
+# Clerk Authentication (Bắt buộc)
+CLERK_FRONTEND_API=your-clerk-frontend-api-url
+CLERK_API_KEY=your-clerk-secret-key
 
-# Flask Secret Keys
-SECRET_KEY=your-very-secret-key-here-change-this-in-production
-SECRET_KEY_SESSION=another-secret-key-for-sessions
-
-# Email Configuration (Gmail SMTP)
-MAIL_USERNAME=your-email@gmail.com
-MAIL_PASSWORD=your-app-password
-
-# Google OAuth (Tùy chọn)
+# Google OAuth (Bắt buộc)
 CLIENT_ID=your-google-client-id.googleusercontent.com
 CLIENT_SECRET=your-google-client-secret
+
+# Database Configuration (Bắt buộc)
+SQLALCHEMY_DATABASE_URI=postgresql://postgres:your_password@localhost:5432/travel_vietnam_db
+
+# Flask Secret Key (Bắt buộc)
+SECRET_KEY=your-very-secret-key-here-change-this-in-production
+
+# Email Configuration (Bắt buộc cho forgot password)
+MAIL_USERNAME=your-email@gmail.com
+MAIL_PASSWORD=your-gmail-app-password
 
 # Facebook OAuth (Tùy chọn)
 FACEBOOK_CLIENT_ID=your-facebook-app-id
@@ -147,9 +115,6 @@ FACEBOOK_CLIENT_SECRET=your-facebook-app-secret
 # Weather API (Tùy chọn)
 WEATHER_API_KEY=your-openweathermap-api-key
 WEATHER_BASE_URL=http://api.openweathermap.org/data/2.5
-
-# Google AI API Key (Bắt buộc cho tính năng AI)
-GOOGLE_AI_API_KEY=your-google-ai-api-key
 ```
 
 ### 6. Khởi tạo database
@@ -197,22 +162,59 @@ flask run
 
 Truy cập ứng dụng tại: `http://localhost:5000`
 
+## ⚡ Quick Start (Chạy nhanh)
+
+Nếu bạn muốn test nhanh mà chưa có đủ API keys:
+
+1. **Chỉ cần có**: Database và SECRET_KEY
+2. **Tạo file `.env` tối thiểu**:
+```env
+# Database (Bắt buộc)
+SQLALCHEMY_DATABASE_URI=postgresql://postgres:your_password@localhost:5432/travel_vietnam_db
+
+# Flask Secret (Bắt buộc)  
+SECRET_KEY=your-secret-key-here
+
+# Các API khác để trống (sẽ dùng demo data)
+CLERK_FRONTEND_API=
+CLERK_API_KEY=
+CLIENT_ID=
+CLIENT_SECRET=
+MAIL_USERNAME=
+MAIL_PASSWORD=
+FACEBOOK_CLIENT_ID=
+FACEBOOK_CLIENT_SECRET=
+WEATHER_API_KEY=demo_key
+WEATHER_BASE_URL=demo_url
+```
+
+3. **Chạy app**: Các tính năng cơ bản vẫn hoạt động, phần weather sẽ dùng demo data
+
 ## 🔧 Cấu hình nâng cao
 
 ### 🔑 Hướng dẫn lấy API Keys chi tiết
 
-#### 1. Google AI API Key (Bắt buộc)
+#### 1. Clerk Authentication API (Bắt buộc)
 
-**Bước 1**: Truy cập [Google AI Studio](https://aistudio.google.com/)
-**Bước 2**: Đăng nhập bằng tài khoản Google
-**Bước 3**: Click "Get API Key" ở góc phải trên
-**Bước 4**: Click "Create API Key in new project" hoặc chọn project có sẵn
-**Bước 5**: Copy API key và paste vào file `.env`:
+**Bước 1**: Truy cập [Clerk Dashboard](https://dashboard.clerk.com/)
+**Bước 2**: Đăng ký tài khoản miễn phí hoặc đăng nhập
+**Bước 3**: Tạo Application mới:
+   - Click "Add Application"
+   - Nhập tên ứng dụng (ví dụ: "Travel Vietnam App")
+   - Chọn authentication methods cần thiết
+   - Click "Create Application"
+
+**Bước 4**: Lấy API Keys:
+   - Vào "API Keys" trong sidebar
+   - Copy **Publishable Key** → `CLERK_FRONTEND_API`
+   - Copy **Secret Key** → `CLERK_API_KEY`
+
 ```env
-GOOGLE_AI_API_KEY=AIzaSyABC123DEF456GHI789JKL012MNO345PQR
+CLERK_FRONTEND_API=pk_test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+CLERK_API_KEY=sk_test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
-#### 2. Google OAuth Credentials (Tùy chọn)
+#### 2. Google OAuth Credentials (Bắt buộc)
 
 **Bước 1**: Truy cập [Google Cloud Console](https://console.cloud.google.com/)
 **Bước 2**: Tạo project mới:
@@ -259,7 +261,24 @@ FACEBOOK_CLIENT_ID=1234567890123456
 FACEBOOK_CLIENT_SECRET=abcdef1234567890abcdef1234567890
 ```
 
-#### 4. Gmail App Password (Cho tính năng Email)
+#### 4. Flask Secret Key (Bắt buộc)
+
+**Cách 1**: Tự generate bằng Python:
+```python
+import secrets
+print(secrets.token_hex(32))
+```
+
+**Cách 2**: Sử dụng online generator:
+- Truy cập [Password Generator](https://passwordsgenerator.net/)
+- Chọn length 64 characters
+- Include: uppercase, lowercase, numbers, symbols
+
+```env
+SECRET_KEY=your-generated-64-character-secret-key-here
+```
+
+#### 5. Gmail App Password (Bắt buộc cho Email)
 
 **Bước 1**: Đăng nhập Gmail và vào [Google Account Settings](https://myaccount.google.com/)
 **Bước 2**: Vào "Security" → Bật "2-Step Verification" nếu chưa có
@@ -275,7 +294,7 @@ MAIL_USERNAME=your-email@gmail.com
 MAIL_PASSWORD=abcd efgh ijkl mnop
 ```
 
-#### 5. OpenWeatherMap API Key (Tùy chọn)
+#### 6. OpenWeatherMap API Key (Tùy chọn)
 
 **Bước 1**: Truy cập [OpenWeatherMap](https://openweathermap.org/api)
 **Bước 2**: Click "Sign Up" để tạo tài khoản miễn phí
@@ -286,6 +305,8 @@ MAIL_PASSWORD=abcd efgh ijkl mnop
 WEATHER_API_KEY=abcdef1234567890abcdef1234567890
 WEATHER_BASE_URL=http://api.openweathermap.org/data/2.5
 ```
+
+> 💡 **Lưu ý**: API key OpenWeatherMap có thể mất 10-15 phút để active sau khi tạo.
 
 > ⚠️ **Lưu ý quan trọng**: 
 > - **KHÔNG** commit file `.env` lên Git
@@ -306,14 +327,23 @@ echo "*.env" >> .gitignore
 Sau khi cấu hình, bạn có thể test các API:
 
 ```bash
-# Test Google AI
-curl -X POST \
-  -H "Content-Type: application/json" \
-  -d '{"contents":[{"parts":[{"text":"Hello"}]}]}' \
-  "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=YOUR_API_KEY"
+# Test Clerk API
+curl -X GET \
+  -H "Authorization: Bearer YOUR_CLERK_API_KEY" \
+  "https://api.clerk.com/v1/users"
 
 # Test Weather API
 curl "http://api.openweathermap.org/data/2.5/weather?q=Hanoi&appid=YOUR_WEATHER_API_KEY"
+
+# Test Gmail SMTP (qua Python)
+python -c "
+import smtplib
+server = smtplib.SMTP('smtp.gmail.com', 587)
+server.starttls()
+server.login('your-email@gmail.com', 'your-app-password')
+print('Gmail connection successful!')
+server.quit()
+"
 ```
 
 ## 📁 Cấu trúc thư mục
@@ -477,6 +507,54 @@ pip install -r requirements.txt
 - [ ] Tối ưu performance với Redis cache
 - [ ] API rate limiting
 - [ ] Unit tests và integration tests
+
+## 👥 Thông tin nhóm
+
+**🏆 Nhóm 1** - Đồ án môn Lập trình ứng dụng web - NT208
+
+### 👨‍💻 Thành viên nhóm:
+
+| STT | Họ và tên | MSSV |
+|-----|-----------|------|
+| 1 | **Lê Đăng Minh Hiển** | `23520458` |
+| 2 | **Vũ Nguyễn Thái Dương** | `23520360` |Designer |
+
+### 🎯 Phân công công việc:
+
+#### Lê Đăng Minh Hiển (23520458):
+- 🏗️ Thiết kế kiến trúc hệ thống
+- 🗄️ Phát triển Backend với Flask
+- 🤖 Tích hợp AI (Google Generative AI)
+- 🔐 Xây dựng hệ thống Authentication & Authorization
+- 📊 Thiết kế và quản lý Database (PostgreSQL)
+- 🔧 Cấu hình deployment
+
+#### Vũ Nguyễn Thái Dương (23520360):
+- 🎨 Thiết kế giao diện người dùng (UI/UX)
+- 💻 Phát triển Frontend (HTML, CSS, JavaScript)
+- 📱 Tối ưu responsive design
+- 🗺️ Tích hợp bản đồ và geolocation
+- 🌤️ Phát triển tính năng thời tiết
+- 🎭 Thiết kế trải nghiệm người dùng
+
+### 🏫 Thông tin học thuật:
+
+- **Trường**: Đại học Công nghệ Thông tin - ĐHQG TP.HCM
+- **Môn học**: Lập trình Web
+- **Học kỳ**: HK2 2024-2025
+- **Giảng viên hướng dẫn**: Trần Tuấn Dũng
+
+### 🚀 Công nghệ và kỹ năng áp dụng:
+
+- **Backend**: Python Flask, SQLAlchemy, PostgreSQL
+- **Frontend**: HTML5, CSS3, JavaScript ES6+, Bootstrap
+- **AI Integration**: Google Generative AI (Gemini)
+- **Authentication**: OAuth 2.0 (Google, Facebook), JWT
+- **DevOps**: Git, GitHub, Deployment strategies
+- **API Integration**: RESTful APIs, Weather APIs
+- **Database Design**: ERD, Normalization, Migration
+
+---
 
 ## 🤝 Đóng góp
 
