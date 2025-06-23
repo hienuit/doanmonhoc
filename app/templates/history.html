@@ -115,6 +115,9 @@
   <div id="history-list" class="loading">Đang tải dữ liệu...</div>
 
   <script>
+    // Khai báo biến global
+    let historyJsonArray = [];
+
     function formatBudget(val) {
       if (!val) return "Không rõ";
       if (!isNaN(val)) return Number(val).toLocaleString() + " VND";
@@ -147,7 +150,7 @@
           return;
         }
 
-        historyJsonArray = []
+        historyJsonArray = []; // Reset array
         data.histories.forEach((item, index) => {
 
 
@@ -218,84 +221,41 @@
         window.location.href = `/schedule-from-history/${historyId}`;
       }
 
-      // document.getElementById("create-personalized-history").addEventListener("click", function () {
-      //   if (historyJsonArray.length === 0) {
-      //     alert("Không có lịch sử nào để gửi!");
-      //     return;
-      //   }
-      // });
+      document.getElementById("create-personalized-history").addEventListener("click", function () {
+        if (historyJsonArray.length === 0) {
+          alert("Không có lịch sử nào để gửi!");
+          return;
+        }
 
-        
-      // fetch('/create-personalized-history', {
-      //     method: 'POST',
-      //     headers: {
-      //       'Content-Type': 'application/json'
-      //     },
-      //     body: JSON.stringify(historyJsonArray)
-      //   })
-      //     .then(response => {
-      //       if (!response.ok) {
-      //         return response.json().then(data => {
-      //           console.error("Lỗi từ server:", data.error || response.statusText);
-      //           throw new Error(data.error || "Không thể gửi dữ liệu");
-      //         });
-      //       }
-      //       return response.json(); // Trả về JSON response nếu thành công
-      //     })
-      //     .then(data => {
-      //       // Kiểm tra nếu phản hồi có dữ liệu
-      //       if (data.success && data.data) {
-      //         // Lưu chỉ phần lịch sử đã được xử lý vào localStorage
-      //         localStorage.setItem('personalizedHistory', JSON.stringify(data.data));
-      //         // Chuyển hướng tới trang personalized-history
-      //         window.location.href = '/personalized-history';
-      //       } else {
-              
-      //         throw new Error("Phản hồi không hợp lệ từ server.");
-      //       }
-      //     })
-      //     .catch(error => {
-      //       console.error("Lỗi khi gửi lịch sử cá nhân hóa:", error);
-      //       alert("Đã xảy ra lỗi khi gửi lịch sử cá nhân hóa: " + error.message);
-      //     });
-          
-
-
-          // document.getElementById("create-personalized-history").addEventListener("click", function () {
-          //     if (historyJsonArray.length === 0) {
-          //       alert("Không có lịch sử nào để gửi!");
-          //       return;
-          //     }
-
-          //     fetch('/create-personalized-history', {
-          //       method: 'POST',
-          //       headers: {
-          //         'Content-Type': 'application/json'
-          //       },
-          //       body: JSON.stringify(historyJsonArray)
-          //     })
-          //     .then(response => {
-          //       if (!response.ok) {
-          //         return response.json().then(data => {
-          //           console.error("Lỗi từ server:", data.error || response.statusText);
-          //           throw new Error(data.error || "Không thể gửi dữ liệu");
-          //         });
-          //       }
-          //       return response.json(); // Trả về JSON response nếu thành công
-          //     })
-          //     .then(data => {
-          //       if (data.success && data.data) {
-          //         localStorage.setItem('personalizedHistory', JSON.stringify(data.data));
-          //         window.location.href = '/personalized-history';
-          //       } else {
-          //         throw new Error("Phản hồi không hợp lệ từ server.");
-          //       }
-          //     })
-          //     .catch(error => {
-          //       console.error("Lỗi khi gửi lịch sử cá nhân hóa:", error);
-          //       alert("Đã xảy ra lỗi khi gửi lịch sử cá nhân hóa: " + error.message);
-          //     });
-          //   });
+        fetch('/create-personalized-history', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(historyJsonArray)
+        })
+        .then(response => {
+          if (!response.ok) {
+            return response.json().then(data => {
+              console.error("Lỗi từ server:", data.error || response.statusText);
+              throw new Error(data.error || "Không thể gửi dữ liệu");
+            });
+          }
+          return response.json(); // Trả về JSON response nếu thành công
+        })
+        .then(data => {
+          if (data.success && data.data) {
+            localStorage.setItem('personalizedHistory', JSON.stringify(data.data));
+            window.location.href = '/personalized-history';
+          } else {
+            throw new Error("Phản hồi không hợp lệ từ server.");
+          }
+        })
+        .catch(error => {
+          console.error("Lỗi khi gửi lịch sử cá nhân hóa:", error);
+          alert("Đã xảy ra lỗi khi gửi lịch sử cá nhân hóa: " + error.message);
+        });
+      });
 
 
 
