@@ -1,4 +1,4 @@
-# 🇻🇳 Du Lịch Việt Nam với AI - Travel Vietnam with AI
+# Du Lịch Việt Nam với AI - Travel By AI
 
 ## 👥 Thông tin nhóm
 
@@ -9,7 +9,7 @@
 | STT | Họ và tên | MSSV |
 |-----|-----------|------|
 | 1 | **Lê Đăng Minh Hiển** | `23520458` |
-| 2 | **Vũ Nguyễn Thái Dương** | `23520360` |Designer |
+| 2 | **Vũ Nguyễn Thái Dương** | `23520360` |
 
 ### 🎯 Phân công công việc:
 
@@ -32,7 +32,7 @@
 ### 🏫 Thông tin học thuật:
 
 - **Trường**: Đại học Công nghệ Thông tin - ĐHQG TP.HCM
-- **Môn học**: Lập trình Web
+- **Môn học**: Lập trình ứng dụng Web - NT208
 - **Học kỳ**: HK2 2024-2025
 - **Giảng viên hướng dẫn**: Trần Tuấn Dũng
 
