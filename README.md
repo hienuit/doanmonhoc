@@ -1,5 +1,41 @@
 # 🇻🇳 Du Lịch Việt Nam với AI - Travel Vietnam with AI
 
+## 👥 Thông tin nhóm
+
+**🏆 Nhóm 1** - Đồ án môn Lập trình ứng dụng web - NT208
+
+### 👨‍💻 Thành viên nhóm:
+
+| STT | Họ và tên | MSSV |
+|-----|-----------|------|
+| 1 | **Lê Đăng Minh Hiển** | `23520458` |
+| 2 | **Vũ Nguyễn Thái Dương** | `23520360` |Designer |
+
+### 🎯 Phân công công việc:
+
+#### Lê Đăng Minh Hiển (23520458):
+- 🏗️ Thiết kế kiến trúc hệ thống
+- 🗄️ Phát triển Backend với Flask
+- 🤖 Tích hợp AI (Google Generative AI)
+- 🔐 Xây dựng hệ thống Authentication & Authorization
+- 📊 Thiết kế và quản lý Database (PostgreSQL)
+- 🔧 Cấu hình deployment
+
+#### Vũ Nguyễn Thái Dương (23520360):
+- 🎨 Thiết kế giao diện người dùng (UI/UX)
+- 💻 Phát triển Frontend (HTML, CSS, JavaScript)
+- 📱 Tối ưu responsive design
+- 🗺️ Tích hợp bản đồ và geolocation
+- 🌤️ Phát triển tính năng thời tiết
+- 🎭 Thiết kế trải nghiệm người dùng
+
+### 🏫 Thông tin học thuật:
+
+- **Trường**: Đại học Công nghệ Thông tin - ĐHQG TP.HCM
+- **Môn học**: Lập trình Web
+- **Học kỳ**: HK2 2024-2025
+- **Giảng viên hướng dẫn**: Trần Tuấn Dũng
+
 ## 📖 Mô tả dự án
 
 Ứng dụng web du lịch thông minh sử dụng AI để gợi ý địa điểm du lịch tại Việt Nam. Hệ thống giúp người dùng tìm kiếm và lập kế hoạch du lịch dựa trên sở thích cá nhân, thời gian và ngân sách.
@@ -103,6 +139,7 @@ SQLALCHEMY_DATABASE_URI=postgresql://postgres:your_password@localhost:5432/trave
 
 # Flask Secret Key (Bắt buộc)
 SECRET_KEY=your-very-secret-key-here-change-this-in-production
+SECRET_KEY_SESSION=session-key
 
 # Email Configuration (Bắt buộc cho forgot password)
 MAIL_USERNAME=your-email@gmail.com
@@ -507,42 +544,6 @@ pip install -r requirements.txt
 - [ ] Tối ưu performance với Redis cache
 - [ ] API rate limiting
 - [ ] Unit tests và integration tests
-
-## 👥 Thông tin nhóm
-
-**🏆 Nhóm 1** - Đồ án môn Lập trình ứng dụng web - NT208
-
-### 👨‍💻 Thành viên nhóm:
-
-| STT | Họ và tên | MSSV |
-|-----|-----------|------|
-| 1 | **Lê Đăng Minh Hiển** | `23520458` |
-| 2 | **Vũ Nguyễn Thái Dương** | `23520360` |Designer |
-
-### 🎯 Phân công công việc:
-
-#### Lê Đăng Minh Hiển (23520458):
-- 🏗️ Thiết kế kiến trúc hệ thống
-- 🗄️ Phát triển Backend với Flask
-- 🤖 Tích hợp AI (Google Generative AI)
-- 🔐 Xây dựng hệ thống Authentication & Authorization
-- 📊 Thiết kế và quản lý Database (PostgreSQL)
-- 🔧 Cấu hình deployment
-
-#### Vũ Nguyễn Thái Dương (23520360):
-- 🎨 Thiết kế giao diện người dùng (UI/UX)
-- 💻 Phát triển Frontend (HTML, CSS, JavaScript)
-- 📱 Tối ưu responsive design
-- 🗺️ Tích hợp bản đồ và geolocation
-- 🌤️ Phát triển tính năng thời tiết
-- 🎭 Thiết kế trải nghiệm người dùng
-
-### 🏫 Thông tin học thuật:
-
-- **Trường**: Đại học Công nghệ Thông tin - ĐHQG TP.HCM
-- **Môn học**: Lập trình Web
-- **Học kỳ**: HK2 2024-2025
-- **Giảng viên hướng dẫn**: Trần Tuấn Dũng
 
 ### 🚀 Công nghệ và kỹ năng áp dụng:
 
