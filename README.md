@@ -1,4 +1,4 @@
-# 🇻🇳 Du Lịch Việt Nam với AI - Travel Vietnam with AI
+# Du Lịch Việt Nam với AI - Travel by AI
 
 ## 📖 Mô tả dự án
 
