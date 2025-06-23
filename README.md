@@ -1,5 +1,40 @@
 # Du Lịch Việt Nam với AI - Travel by AI
 
+## 👥 Thông tin nhóm phát triển
+
+**🏆 Nhóm 1** - Đồ án môn Lập trình Web
+
+### 👨‍💻 Thành viên nhóm:
+
+| STT | Họ và tên | MSSV | Vai trò |
+|-----|-----------|------|---------|
+| 1 | **Lê Đăng Minh Hiển** | `23520458` | Team Leader & Backend Developer |
+| 2 | **Vũ Nguyễn Thái Dương** | `23520360` | Frontend Developer & UI/UX Designer |
+
+### 🎯 Phân công công việc:
+
+#### Lê Đăng Minh Hiển (23520458):
+- 🏗️ Thiết kế kiến trúc hệ thống
+- 🗄️ Phát triển Backend với Flask
+- 🤖 Tích hợp AI (Google Generative AI)
+- 🔐 Xây dựng hệ thống Authentication & Authorization
+- 📊 Thiết kế và quản lý Database (PostgreSQL)
+- 🔧 Cấu hình deployment và DevOps
+
+#### Vũ Nguyễn Thái Dương (23520360):
+- 🎨 Thiết kế giao diện người dùng (UI/UX)
+- 💻 Phát triển Frontend (HTML, CSS, JavaScript)
+- 📱 Tối ưu responsive design
+- 🗺️ Tích hợp bản đồ và geolocation
+- 🌤️ Phát triển tính năng thời tiết
+- 🎭 Thiết kế trải nghiệm người dùng
+
+### 🏫 Thông tin học thuật:
+
+- **Trường**: Đại học Công nghệ Thông tin - ĐHQG TP.HCM
+- **Môn học**: Lập trình Web
+- **Học kỳ**: HK1 2024-2025
+- **Giảng viên hướng dẫn**: [Tên giảng viên]
 ## 📖 Mô tả dự án
 
 Ứng dụng web du lịch thông minh sử dụng AI để gợi ý địa điểm du lịch tại Việt Nam. Hệ thống giúp người dùng tìm kiếm và lập kế hoạch du lịch dựa trên sở thích cá nhân, thời gian và ngân sách.
